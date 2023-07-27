@@ -1,6 +1,7 @@
 import './App.css';
-import Header from './components/Header';
-import DatingCards from './components/DatingCards';
+import Header from './components/Header/Header';
+import DatingCards from './components/DatingCard/DatingCards';
+import SwipeButtons from './components/SwipeButtons/SwipeButtons';
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
       <Header />
       <DatingCards />
+      <SwipeButtons />
     </div>
   );
 }

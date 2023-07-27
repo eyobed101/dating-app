@@ -6,19 +6,31 @@ import StarRateIcon from "@material-ui/icons/StarRate";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import FlashOnIcon from "@material-ui/icons/FlashOn";
 import IconButton from "@material-ui/core/IconButton";
-const SwipeButtons = () => {
+import { connect } from "react-redux";
+import { swipePerson, addToFavorites } from "../../redux/action/datingActions";
+
+const SwipeButtons = ({ name, addToFavorites, swipePerson }) => {
+
+  const handleAddToFavorites = () => {
+    addToFavorites(name); // Replace "Person's Name" with the actual name
+  };
+
+  const handleSwipePerson = (direction) => {
+    swipePerson(direction, name); // Replace "Person's Name" with the actual name
+  };
+
   return (
     <div className="swipeButtons">
       <IconButton className="swipeButtons__repeat">
         <ReplayIcon fontSize="large" />
       </IconButton>
-      <IconButton className="swipeButtons__left">
+      <IconButton className="swipeButtons__left"  onClick={() => handleSwipePerson("left")}>
         <CloseIcon fontSize="large" />
       </IconButton>
       <IconButton className="swipeButtons__star">
         <StarRateIcon fontSize="large" />
       </IconButton>
-      <IconButton className="swipeButtons__right">
+      <IconButton className="swipeButtons__right" onClick={() => handleSwipePerson("right")}>
         <FavoriteIcon fontSize="large" />
       </IconButton>
       <IconButton className="swipeButtons__lightning">
@@ -27,4 +39,5 @@ const SwipeButtons = () => {
     </div>
   );
 };
-export default SwipeButtons;
+export default connect(null, { addToFavorites, swipePerson })(SwipeButtons);
+

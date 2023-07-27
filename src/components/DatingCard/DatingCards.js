@@ -8,7 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import SwipeButtons from "../SwipeButtons/SwipeButtons";
 import { swipePerson, addToFavorites } from "../../redux/action/datingActions";
 
-const DatingCards = ({ people, swipePerson, addToFavorites }) => {
+const DatingCards = ({ swipePerson, addToFavorites }) => {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
@@ -54,7 +54,7 @@ const DatingCards = ({ people, swipePerson, addToFavorites }) => {
           </TinderCard>
         ))}
       </div>
-      <SwipeButtons />
+      <SwipeButtons name={cards[0]?.name}/>
     </div>
   );
 };
